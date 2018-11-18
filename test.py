@@ -8,9 +8,10 @@ import torch.nn as nn
 from torch.autograd import Variable
 from models import DnCNN
 from utils import *
+import matplotlib.pyplot as plt
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 parser = argparse.ArgumentParser(description="DnCNN_Test")
 parser.add_argument("--num_of_layers", type=int, default=17, help="Number of total layers")
@@ -50,6 +51,10 @@ def main():
         ISource, INoisy = Variable(ISource.cuda()), Variable(INoisy.cuda())
         with torch.no_grad(): # this can save much memory
             Out = torch.clamp(INoisy-model(INoisy), 0., 1.)
+            fig, ax = plt.subplots(nrows= 1, ncols=2)
+            ax[0].imshow(np.array(Out).squeeze(), cmap='gray')
+            ax[1].imshow(np.array(INoisy).squeeze(), cmap='gray')
+            plt.show()
         ## if you are using older version of PyTorch, torch.no_grad() may not be supported
         # ISource, INoisy = Variable(ISource.cuda(),volatile=True), Variable(INoisy.cuda(),volatile=True)
         # Out = torch.clamp(INoisy-model(INoisy), 0., 1.)
