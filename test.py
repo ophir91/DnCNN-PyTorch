@@ -8,6 +8,7 @@ import torch.nn as nn
 from torch.autograd import Variable
 from models import DnCNN
 from utils import *
+% matplotlib inline
 import matplotlib.pyplot as plt
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
