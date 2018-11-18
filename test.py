@@ -11,7 +11,7 @@ from utils import *
 import matplotlib.pyplot as plt
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 parser = argparse.ArgumentParser(description="DnCNN_Test")
 parser.add_argument("--num_of_layers", type=int, default=17, help="Number of total layers")
