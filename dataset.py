@@ -35,7 +35,7 @@ def prepare_data(data_path, patch_size, stride, aug_times=1):
     files.sort()
     h5f = h5py.File('train.h5', 'w')
     train_num = 0
-    for i in range(len(files)):
+    for i in range(len(files[0:40])):
         img = cv2.imread(files[i])
         h, w, c = img.shape
         for k in range(len(scales)):
